@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5977539853923307630}
   - component: {fileID: 5977539853923307631}
+  - component: {fileID: 2578475985106872691}
   m_Layer: 0
   m_Name: Fish
   m_TagString: Fish
@@ -128,3 +129,15 @@ MonoBehaviour:
   _waveCycle: 0
   _moveSpeedBasic: 0
   _awareRange: 0
+--- !u!114 &2578475985106872691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5977539853923307628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31aafaab6b1da8e45aab223a5d0aed74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

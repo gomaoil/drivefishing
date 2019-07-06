@@ -11,17 +11,6 @@ namespace Target
         [SerializeField]
         int _initialFishNum = 20;
 
-        private enum FishType
-        {
-            katsuo,
-            maguro,
-            mekaziki,
-            sake,
-            zako1,
-            zako2,
-            zako,
-        };
-
         void Start()
         {
             var screenBounds = Util.GetScreenBounds();
@@ -33,7 +22,7 @@ namespace Target
                 var fishType = (FishType)URandom.Range(0, Enum.GetValues(typeof(FishType)).Length);
                 string fishName = fishType.ToString();
                 fish.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(fishName);
-                fish.name = fishName;
+                fish.GetComponent<FishProperty>()._fishType = fishType;
             }
         }
 
