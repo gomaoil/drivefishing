@@ -28,6 +28,10 @@ namespace Player
 
             MovedVelocity = (Vector2)transform.position - Position;
             Position = transform.position;
+
+            // 向き合わせ
+            if (0.0f < MovedVelocity.x) { transform.localScale = new Vector3(-1f, 1f, 1f); }
+            else if (MovedVelocity.x < 0.0f) { transform.localScale = new Vector3(1f, 1f, 1f); }
         }
     }
 
