@@ -10,12 +10,24 @@ namespace Player
         [SerializeField, Range(0f, 1f)]
         private float _followStrength;
 
+        public Vector2 Position { get; private set; }
+        public Vector2 MovedVelocity { get; private set; }
+
+        private void Start()
+        {
+            transform.position = Util.ClampInScreen(Input.mousePosition);
+            Position = transform.position;
+        }
+
         private void Update()
         {
             var targetPos = Util.ClampInScreen(Input.mousePosition);
 
             // このスクリプトがアタッチされたゲームオブジェクトを、マウス位置に線形補間で追従させる
             transform.position = Vector3.Lerp(transform.position, targetPos, _followStrength);
+
+            MovedVelocity = (Vector2)transform.position - Position;
+            Position = transform.position;
         }
     }
 
