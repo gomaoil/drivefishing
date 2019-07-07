@@ -8,8 +8,8 @@ namespace Target
     public class FishProperty : MonoBehaviour
     {
         public FishType _fishType;
-        // public ColorType _colorType;
-        // public SizeType _SIzeType;
+        public ColorType _colorType;
+        public SizeType _SIzeType;
     }
 
 }

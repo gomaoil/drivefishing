@@ -19,15 +19,18 @@ namespace Target
                 GameObject fish = Instantiate(_prefabFish,
                     new Vector3(URandom.Range(screenBounds._left, screenBounds._right), URandom.Range(screenBounds._bottom, screenBounds._top), 0f),
                     Quaternion.identity);
+
                 var fishType = (FishType)URandom.Range(0, Enum.GetValues(typeof(FishType)).Length);
+                var colorType = (ColorType)URandom.Range(0, Enum.GetValues(typeof(ColorType)).Length);
+                var sizeType = (SizeType)URandom.Range(0, Enum.GetValues(typeof(SizeType)).Length);
+
                 string fishName = fishType.ToString();
-                fish.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(fishName);
+                SpriteRenderer spriteRenderer = fish.GetComponentInChildren<SpriteRenderer>();
+                spriteRenderer.sprite = Resources.Load<Sprite>(fishName);
+                spriteRenderer.material.SetColor("_ComplementColor0", colorType.GetColor());
+
                 fish.GetComponent<FishProperty>()._fishType = fishType;
             }
-        }
-
-        void Update()
-        {
         }
     }
 
