@@ -18,9 +18,9 @@ namespace Target
 
     public static partial class EnumExtend
     {
-        static Color ColorOrange = new Color(1f, 0.5f, 0f);
-        static Color ColorIndigo = new Color(0.3f, 0f, 0.55f);
-        static Color ColorViolet = new Color(0.58f, 0f, 0.83f);
+        private static Color ColorOrange = new Color(1f, 0.5f, 0f);
+        private static Color ColorIndigo = new Color(0.3f, 0f, 0.55f);
+        private static Color ColorViolet = new Color(0.58f, 0f, 0.83f);
 
         public static Color GetColor(this ColorType type)
         {

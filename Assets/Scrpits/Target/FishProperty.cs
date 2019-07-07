@@ -9,7 +9,7 @@ namespace Target
     {
         public FishType _fishType;
         public ColorType _colorType;
-        public SizeType _SIzeType;
+        public SizeType _sizeType;
     }
 
 }

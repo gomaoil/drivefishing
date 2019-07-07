@@ -20,16 +20,16 @@ namespace Target
                     new Vector3(URandom.Range(screenBounds._left, screenBounds._right), URandom.Range(screenBounds._bottom, screenBounds._top), 0f),
                     Quaternion.identity);
 
-                var fishType = (FishType)URandom.Range(0, Enum.GetValues(typeof(FishType)).Length);
-                var colorType = (ColorType)URandom.Range(0, Enum.GetValues(typeof(ColorType)).Length);
-                var sizeType = (SizeType)URandom.Range(0, Enum.GetValues(typeof(SizeType)).Length);
+                FishProperty property = fish.GetComponent<FishProperty>();
+                property._fishType = (FishType)URandom.Range(0, Enum.GetValues(typeof(FishType)).Length);
+                property._colorType = (ColorType)URandom.Range(0, Enum.GetValues(typeof(ColorType)).Length);
+                property._sizeType = (SizeType)URandom.Range(0, Enum.GetValues(typeof(SizeType)).Length);
 
-                string fishName = fishType.ToString();
+                string fishName = property._fishType.ToString();
                 SpriteRenderer spriteRenderer = fish.GetComponentInChildren<SpriteRenderer>();
                 spriteRenderer.sprite = Resources.Load<Sprite>(fishName);
-                spriteRenderer.material.SetColor("_ComplementColor0", colorType.GetColor());
-
-                fish.GetComponent<FishProperty>()._fishType = fishType;
+                spriteRenderer.material.SetColor("_ComplementColor0", property._colorType.GetColor());
+                fish.transform.localScale = Vector3.one * property._sizeType.GetScale();
             }
         }
     }

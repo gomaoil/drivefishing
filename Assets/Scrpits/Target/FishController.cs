@@ -183,8 +183,10 @@ namespace Target
         private void SetPosAndDirection(Vector2 pos, Vector2 velocity)
         {
             transform.position = pos;
-            if (0.0f < velocity.x) { transform.localScale = new Vector3(-1f, 1f, 1f); }
-            else if (velocity.x < 0.0f) { transform.localScale = new Vector3(1f, 1f, 1f); }
+            var scale = transform.localScale;
+            if (0.0f < velocity.x) { scale.x = -Mathf.Abs(scale.x); }
+            else if (velocity.x < 0.0f) { scale.x = Mathf.Abs(scale.x); }
+            transform.localScale = scale;
         }
     }
 
