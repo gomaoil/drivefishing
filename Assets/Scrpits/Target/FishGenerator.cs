@@ -29,6 +29,7 @@ namespace Target
                 SpriteRenderer spriteRenderer = fish.GetComponentInChildren<SpriteRenderer>();
                 spriteRenderer.sprite = Resources.Load<Sprite>(fishName);
                 spriteRenderer.material.SetColor("_ComplementColor0", property._colorType.GetColor());
+                if (property._colorType == ColorType.White) { spriteRenderer.material.SetColor("_ComplementColor1", Color.gray); }
                 fish.transform.localScale = Vector3.one * property._sizeType.GetScale();
             }
         }
