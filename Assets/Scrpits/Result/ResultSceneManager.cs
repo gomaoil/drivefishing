@@ -139,6 +139,8 @@ namespace Result
         // Update is called once per frame
         void Update()
         {
+            _waitTimer.Update();
+            
             if (_waitTimer.IsEnd)
             {
                 if (Input.GetMouseButtonUp(0))
