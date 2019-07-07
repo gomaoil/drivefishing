@@ -11,7 +11,6 @@ namespace Player
     public class Fisherman : MonoBehaviour
     {
         private const float kCountDownTime = 3f;
-        private const int kCatchTryNum = 3;
         // 毎回 ToString するの気が引けるし、変わってない判定するのも面倒なので
         private readonly string[] kNumber = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
@@ -19,6 +18,7 @@ namespace Player
         private TextMeshPro _countDownText;
         [SerializeField]
         private PolygonCollider2D _collider;
+        public int _catchTryNum = 3;
         private Timer _timer;
         private int _restTryNum;
         private bool _isCountDown;
@@ -27,8 +27,10 @@ namespace Player
         void Start()
         {
             _timer = new Timer();
-            _restTryNum = kCatchTryNum;
+            _restTryNum = _catchTryNum;
             _countDownText.enabled = false;
+
+            ScoreManager.Instance.Reset();
         }
 
         // Update is called once per frame
