@@ -51,7 +51,6 @@ namespace Result
             SetColorScore(scoreData);
             SetColorSpecial(scoreData);
             SetSizeSpecial(scoreData);
-            SetMaguroSpecial(scoreData);
             SetToroSpecial(scoreData);
             SetMunielSpecial(scoreData);
             SetTatakiSpecial(scoreData);
@@ -104,11 +103,6 @@ namespace Result
         private void SetSizeSpecial(ScoreData scoreData)
         {
             _sizeSpecial.SetText(scoreData._sizeSpecial._text);
-        }
-
-        private void SetMaguroSpecial(ScoreData scoreData)
-        {
-            _maguroSpecial.SetText(scoreData._maguroSpecial._text);
         }
 
         private void SetToroSpecial(ScoreData scoreData)

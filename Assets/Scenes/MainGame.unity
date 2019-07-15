@@ -127,7 +127,7 @@ PrefabInstance:
     - target: {fileID: 4300717669077829586, guid: 371e3f488e540ba488e523f70f1a2433,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2571465382425269883, guid: 371e3f488e540ba488e523f70f1a2433,
         type: 3}
@@ -198,6 +198,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871216213632720772, guid: 371e3f488e540ba488e523f70f1a2433,
+        type: 3}
+      propertyPath: _catchTryNum
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 371e3f488e540ba488e523f70f1a2433, type: 3}
@@ -294,6 +299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FishNetSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486479417546878916, guid: 3b16726f5a3b5e248a6d82f773441bb3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2486479417546878918, guid: 3b16726f5a3b5e248a6d82f773441bb3,
         type: 3}
@@ -437,7 +447,7 @@ PrefabInstance:
     - target: {fileID: 1805725592021283759, guid: 22738575ef613f84392c27712f58e48e,
         type: 3}
       propertyPath: _initialFishNum
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22738575ef613f84392c27712f58e48e, type: 3}

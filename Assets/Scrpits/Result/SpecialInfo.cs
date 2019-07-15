@@ -1,3 +1,5 @@
+using System;
+
 namespace Result
 {
     public class SpecialInfo
@@ -61,10 +63,57 @@ namespace Result
         public static SpecialInfo Straight(int num)
         {
             var info = new SpecialInfo();
-            info._bonusRate = 1 + (0.1f) * num;
+            info._bonusRate = 1 + (0.2f) * num;
             info._text = $"ストレート{num}×{info._bonusRate}";
             return info;
         }
 
+        public static SpecialInfo BigToro3Kan()
+        {
+            var info = new SpecialInfo();
+            info._bonusRate = 1.5f;
+            info._text = $"大トロ３貫握り×{info._bonusRate}";
+            return info;
+        }
+
+        public static SpecialInfo MidiumToro3Kan()
+        {
+            var info = new SpecialInfo();
+            info._bonusRate = 1.4f;
+            info._text = $"中トロ３貫握り×{info._bonusRate}";
+            return info;
+        }
+
+        public static SpecialInfo SmallToro3Kan()
+        {
+            var info = new SpecialInfo();
+            info._bonusRate = 1.3f;
+            info._text = $"小トロ３貫握り×{info._bonusRate}";
+            return info;
+        }
+
+        internal static SpecialInfo MunielRush()
+        {
+            var info = new SpecialInfo();
+            info._bonusRate = 1.3f;
+            info._text = $"ムニエルづくし×{info._bonusRate}";
+            return info;
+        }
+
+        internal static SpecialInfo Tataki3Kind()
+        {
+            var info = new SpecialInfo();
+            info._bonusRate = 1.5f;
+            info._text = $"たたき３種盛り×{info._bonusRate}";
+            return info;
+        }
+
+        internal static SpecialInfo TunaRush()
+        {
+            var info = new SpecialInfo();
+            info._bonusRate = 1.3f;
+            info._text = $"ツナ缶パック×{info._bonusRate}";
+            return info;
+        }
     }
 }

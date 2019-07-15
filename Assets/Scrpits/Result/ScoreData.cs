@@ -13,7 +13,6 @@ namespace Result
         public int _colorScore;
         public SpecialInfo _colorSpecial;
         public SpecialInfo _sizeSpecial;
-        public SpecialInfo _maguroSpecial;
         public SpecialInfo _toroSpecial;
         public SpecialInfo _munielSpecial;
         public SpecialInfo _tatakiSpecial;
@@ -30,7 +29,6 @@ namespace Result
             _colorGetList = new bool[Enum.GetValues(typeof(ColorType)).Length];
             _colorSpecial = new SpecialInfo();
             _sizeSpecial = new SpecialInfo();
-            _maguroSpecial = new SpecialInfo();
             _toroSpecial = new SpecialInfo();
             _munielSpecial = new SpecialInfo();
             _tatakiSpecial = new SpecialInfo();

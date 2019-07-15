@@ -71,7 +71,7 @@ namespace Result
         }
 
         // 捕まえた魚の登録
-        // @todo 魚の種と色をセットで覚えておくところも作らないとストレートフラッシュが判定できない・・・
+            // @todo 魚の種と色をセットで覚えておくところも作らないとストレートフラッシュが判定できない・・・
         public void RegisterCaughtFish(FishProperty property)
         {
             _colorList[(int)property._colorType] = true;
@@ -112,6 +112,10 @@ namespace Result
             // 役判定
             CalculateColorSpecial(score);
             CalculateSizeSpecial(score);
+            CalculateToroSpecial(score);
+            CalculateMunielSpecial(score);
+            CalculateTatakiSpecial(score);
+            CalculateTunaSpecial(score);
             //-----------
 
             // 基本スコアを合計
@@ -125,7 +129,6 @@ namespace Result
             float scoreTotalFloat = score._total;
             scoreTotalFloat *= score._colorSpecial._bonusRate;
             scoreTotalFloat *= score._sizeSpecial._bonusRate;
-            scoreTotalFloat *= score._maguroSpecial._bonusRate;
             scoreTotalFloat *= score._toroSpecial._bonusRate;
             scoreTotalFloat *= score._munielSpecial._bonusRate;
             scoreTotalFloat *= score._tatakiSpecial._bonusRate;
@@ -133,6 +136,70 @@ namespace Result
             score._total = Mathf.RoundToInt(scoreTotalFloat);
 
             return score;
+        }
+
+        private void CalculateTunaSpecial(ScoreData score)
+        {
+            int[] maguro = _fishList[(int)FishType.maguro];
+            int[] mekaziki = _fishList[(int)FishType.mekaziki];
+            if (3 <= maguro[(int)SizeType.Large] + _fishList[(int)FishType.maguro][(int)SizeType.Medium] + _fishList[(int)FishType.maguro][(int)SizeType.Small]
+             && 3 <= mekaziki[(int)SizeType.Large] + _fishList[(int)FishType.mekaziki][(int)SizeType.Medium] + _fishList[(int)FishType.mekaziki][(int)SizeType.Small])
+            {
+                score._toroSpecial = SpecialInfo.TunaRush();
+                return;
+            }
+        }
+
+        private void CalculateTatakiSpecial(ScoreData score)
+        {
+            int[] katsuo = _fishList[(int)FishType.katsuo];
+            int[] maguro = _fishList[(int)FishType.maguro];
+            int[] sake = _fishList[(int)FishType.sake];
+            if ((0 < katsuo[(int)SizeType.Large] && 0 < maguro[(int)SizeType.Large] && 0 < sake[(int)SizeType.Large])
+             || (0 < katsuo[(int)SizeType.Medium] && 0 < maguro[(int)SizeType.Medium] && 0 < sake[(int)SizeType.Medium])
+             || (0 < katsuo[(int)SizeType.Small] && 0 < maguro[(int)SizeType.Small] && 0 < sake[(int)SizeType.Small]))
+            {
+                score._tatakiSpecial = SpecialInfo.Tataki3Kind();
+            }
+        }
+
+        private void CalculateMunielSpecial(ScoreData score)
+        {
+            int[] sake = _fishList[(int)FishType.sake];
+            int[] mekaziki = _fishList[(int)FishType.mekaziki];
+            if (3 <= sake[(int)SizeType.Large] + _fishList[(int)FishType.sake][(int)SizeType.Medium] + _fishList[(int)FishType.sake][(int)SizeType.Small]
+             && 3 <= mekaziki[(int)SizeType.Large] + _fishList[(int)FishType.mekaziki][(int)SizeType.Medium] + _fishList[(int)FishType.mekaziki][(int)SizeType.Small])
+            {
+                score._toroSpecial = SpecialInfo.MunielRush();
+                return;
+            }
+        }
+
+        private void CalculateToroSpecial(ScoreData score)
+        {
+            if (0 < _fishList[(int)FishType.maguro][(int)SizeType.Large]
+             && 0 < _fishList[(int)FishType.sake][(int)SizeType.Large]
+             && 0 < _fishList[(int)FishType.mekaziki][(int)SizeType.Large])
+            {
+                score._toroSpecial = SpecialInfo.BigToro3Kan();
+                return;
+            }
+
+            if (0 < _fishList[(int)FishType.maguro][(int)SizeType.Medium]
+             && 0 < _fishList[(int)FishType.sake][(int)SizeType.Medium]
+             && 0 < _fishList[(int)FishType.mekaziki][(int)SizeType.Medium])
+            {
+                score._toroSpecial = SpecialInfo.MidiumToro3Kan();
+                return;
+            }
+
+            if (0 < _fishList[(int)FishType.maguro][(int)SizeType.Small]
+             && 0 < _fishList[(int)FishType.maguro][(int)SizeType.Small]
+             && 0 < _fishList[(int)FishType.sake][(int)SizeType.Small])
+            {
+                score._toroSpecial = SpecialInfo.SmallToro3Kan();
+                return;
+            }
         }
 
         // 色に関する役は一番効果が高いやつひとつだけ採用
